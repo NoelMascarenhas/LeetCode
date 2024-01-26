@@ -1,19 +1,19 @@
 class Solution {
     public int maxArea(int[] height) {
-        int maxArea=0;
-        int a_pointer=0;
-        int b_pointer=height.length-1;
+        int max_area=0;
+        int left=0;
+        int right=height.length-1;
         
-        while(a_pointer < b_pointer){
-            if(height[a_pointer] < height[b_pointer]){
-                maxArea = Math.max(maxArea, height[a_pointer] * (b_pointer-a_pointer));
-                a_pointer++;
+        while(left < right){
+            if(height[left] < height[right]){
+                max_area = Math.max(max_area, height[left] * (right-left));
+                left++;
             }
             else{
-                maxArea = Math.max(maxArea, height[b_pointer] * (b_pointer-a_pointer));
-                b_pointer--;
+                max_area = Math.max(max_area, height[right] * (right-left));
+                right--;
             }
         }
-        return maxArea;
+        return max_area;
     }
 }
