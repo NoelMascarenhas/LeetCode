@@ -14,15 +14,18 @@ public class Solution {
         if(head==null){
             return false;
         }
-        ListNode slow = head;
-        ListNode fast = head.next;
-        while(slow != fast){
-            if(fast == null || fast.next == null){
-                return false;
+        HashMap<ListNode,Integer> map = new HashMap<>();
+        ListNode temp = head;
+        while(temp!=null){
+            if(map.containsKey(temp)){
+                return true;
             }
-            slow=slow.next;
-            fast=fast.next.next;
+            else{
+                map.put(temp,1);
+            }
+            temp=temp.next;
         }
-        return true;
+        return false;
+        
     }
 }
